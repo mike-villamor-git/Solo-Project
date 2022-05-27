@@ -179,16 +179,16 @@ async function startGame(){
 					.then(data => {
 
 					console.log('here is the response from the fetch in newMovieHigher: ', data);
-					console.log('here is the first place from the scorelist in newMovieHigher: ', data.scoreList[0]);
-					console.log('here is the name of first place from the scorelist in newMovieHigher: ', data.scoreList[0].name);
+					console.log('here is the score of first place in the scorelist in newMovieHigher: ', data.scoreList[0].score);
+						console.log('here is the name of first place in the scorelist in newMovieHigher: ', data.scoreList[0].name);
 
 					let scoreList = data.scoreList;
-					scoreList.sort((a,b) => (a.score > b.score) ? -1 : 1);
+					scoreList.sort((a,b) => (Number(a.score) > Number(b.score)) ? -1 : 1);
 
 					console.log('sorted scoreList in newMovieLower: ', scoreList);
 						
 					document.querySelector('.leaders').innerHTML = '';
-					document.querySelector('.leaders').innerHTML += '<h1>Leaderboard</h1>';
+					document.querySelector('.leaders').innerHTML += '<h1>Session Leaderboard</h1>';
 
 					
 					for(let i = 0; i < data.scoreList.length; i++){
@@ -286,16 +286,16 @@ async function startGame(){
 					.then(data => {
 					
 						console.log('here is the response from the fetch in newMovieLower: ', data);
-						console.log('here is the first place from the scorelist in newMovieLower: ', data.scoreList[0]);
-						console.log('here is the name of first place from the scorelist in newMovieLower: ', data.scoreList[0].name);
+						console.log('here is the score of first place in the scorelist in newMovieHigher: ', data.scoreList[0].score);
+						console.log('here is the name of first place in the scorelist in newMovieHigher: ', data.scoreList[0].name);
 
 						let scoreList = data.scoreList;
-						scoreList.sort((a,b) => (a.score > b.score) ? -1 : 1);
+						scoreList.sort((a,b) => (Number(a.score) > Number(b.score)) ? -1 : 1);
 
 						console.log('sorted scoreList in newMovieLower: ', scoreList);
 
 						document.querySelector('.leaders').innerHTML = '';
-						document.querySelector('.leaders').innerHTML += '<h1>Leaderboard</h1>';
+						document.querySelector('.leaders').innerHTML += '<h1>Session Leaderboard</h1>';
 					for(let i = 0; i < data.scoreList.length; i++){
 						addToLeaderBoard += `<div class="row"><div class="playerName">${data.scoreList[i].name} : ${data.scoreList[i].score}</div>`
 					}
@@ -342,6 +342,9 @@ function clearMovies() {
 
 }
 
+function leaderBoard() {
+
+}
 
 
 
